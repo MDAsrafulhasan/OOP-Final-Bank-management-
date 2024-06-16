@@ -51,12 +51,14 @@ class BankAccount:
 
     def Take_loan(self):
         if self.loan != 2:
-            self.balance+=1000
-            self.transaction.append(f'Loan added: {1000}')
-            self.loan+=1
-            Admin.total_loan+=1000
-            print(f"\nAmount added to your account. New balance is {self.balance}\n")
-
+            if self.loan_feature=='ON':
+                self.balance+=1000
+                self.transaction.append(f'Loan added: {1000}')
+                self.loan+=1
+                Admin.total_loan+=1000
+                print(f"\nAmount added to your account. New balance is {self.balance}\n")
+            else:
+                print("\nBank is bankrupt. Request admin to turn ON the loan feature\n")
         else:
             print(f"\nYou don't have enough limit.Your current balnace is {self.balance}.Thank you\n")
 
